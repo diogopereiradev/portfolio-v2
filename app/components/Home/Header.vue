@@ -100,6 +100,9 @@
         </div>
       </div>
     </div>
+    <div class="header__scroll-hint">
+      <span class="wheel"></span>
+    </div>
   </div>
 </template>
 
@@ -306,7 +309,9 @@
             gap: .65rem;
             margin-top: 2rem;
             div {
-              width: 100%;
+              @media screen and (max-width: 668px) {
+                width: 100%;
+              }
             }
             .github__link-container {
               @media screen and (max-width: 668px) {
@@ -514,5 +519,32 @@
         }
       }
     }
+    .header__scroll-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 40px;
+      border: 2px solid rgba(255,255,255,.25);
+      border-radius: 16px;
+      display: grid;
+      place-items: flex-start;
+      padding-top: 6px;
+      opacity: .65;
+      margin: 2.4rem auto 0 auto;
+      .wheel {
+        width: 4px;
+        height: 6px;
+        background: var(--primary);
+        border-radius: 2px;
+        animation: wheel 1.5s cubic-bezier(.65,.05,.36,1) infinite;
+      }
+    }
+  }
+  @keyframes wheel {
+    0% { transform: translateY(0); opacity: 0;}
+    25% { opacity: 1;}
+    60% { transform: translateY(14px); opacity: 1;}
+    100% { transform: translateY(20px); opacity: 0; }
   }
 </style>
