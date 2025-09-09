@@ -1,7 +1,8 @@
 <script setup lang="ts">
-  const badgeEl = ref<HTMLElement | null>(null)
-  const cardEl = ref<HTMLElement | null>(null)
-  const contentEl = ref<HTMLElement | null>(null)
+  const badgeEl = ref<HTMLElement | null>(null);
+  const cardEl = ref<HTMLElement | null>(null);
+  const contentEl = ref<HTMLElement | null>(null);
+  const projectsEl = ref<HTMLElement | null>(null);
 </script>
 
 <template>
@@ -32,13 +33,19 @@
             <div ref="badgeEl" class="badge last"><span>Desktop</span></div>
           </div>
           <div class="actions__container">
-            <NuxtLink to="#projects" class="btn btn--primary">{{ $t("header.actions.viewProjects") }}</NuxtLink>
-            <NuxtLink to="#contact" class="btn btn--ghost">{{ $t("header.actions.letsTalk") }}</NuxtLink>
-            <a href="https://github.com/diogopereiradev" target="_blank" class="btn btn--tertiary">{{ $t("header.actions.openGithub") }}</a>
+            <div ref="projectsEl">
+              <NuxtLink to="#projects" class="btn btn--primary">{{ $t("header.actions.viewProjects") }}</NuxtLink>
+            </div>
+            <div>
+              <NuxtLink to="#contact" class="btn btn--ghost">{{ $t("header.actions.letsTalk") }}</NuxtLink>
+            </div>
+            <div class="github__link-container">
+              <a href="https://github.com/diogopereiradev" target="_blank" class="btn github__link">{{ $t("header.actions.openGithub") }}</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="energy__effect-container">
+      <div class="energy__effect-container desktop">
         <EnergyCableEffect
           :container-el="contentEl"
           :start-el="badgeEl"
@@ -52,6 +59,22 @@
           :start-tangent-angle="1"
           :end-tangent-angle="1"
           :tip-handle="1"
+        />
+      </div>
+      <div class="energy__effect-container mobile">
+        <EnergyCableEffect
+          :container-el="contentEl"
+          :start-el="projectsEl"
+          :end-el="cardEl"
+          :start-at="{ x: 0.25, y: 0.9 }"
+          :end-at="{ x: 0.9, y: 0.1 }"
+          :thickness="3"
+          :glow-blur="6"
+          :curvature="3"
+          :start-tangent-angle="40"
+          :end-tangent-angle="80"
+          :speed="0.8"
+          :tip-handle="0.5"
         />
       </div>
       <div class="header__section">
@@ -85,6 +108,10 @@
     width: 100%;
     height: 600px;
     overflow: hidden;
+    @media screen and (max-width: 900px) {
+      height: unset;
+      overflow: unset;
+    }
     .blurred__effect-container {
       position: absolute;
       left: 0;
@@ -132,6 +159,10 @@
       @media screen and (max-width: 2570px) {
         width: 100vw;
       }
+      @media screen and (max-width: 900px) {
+        height: unset;
+        overflow: unset;
+      }
     }
     .header__content {
       display: flex;
@@ -139,7 +170,16 @@
       justify-content: space-between;
       position: relative;
       z-index: 10;
+      @media screen and (max-width: 900px) {
+        width: 100%;
+        flex-direction: column;
+        justify-content: unset;
+        gap: 3rem;
+      }
       .header__section {
+        @media screen and (max-width: 900px) {
+          width: 100%;
+        }
         .details__container {
           position: relative;
           padding: 8rem 0 0 0;
@@ -160,6 +200,9 @@
               font-weight: 500;
               color: var(--primary);
               letter-spacing: 2px;
+              @media screen and (max-width: 920px) {
+                font-size: 1rem;
+              }
             }
           }
           .title__container {
@@ -176,6 +219,9 @@
               -webkit-text-fill-color: transparent;
               @media screen and (max-width: 1300px) {
                 font-size: 4.5rem;
+              }
+              @media screen and (max-width: 920px) {
+                font-size: 3.65rem;
               }
             }
             .description {
@@ -259,6 +305,14 @@
             align-items: center;
             gap: .65rem;
             margin-top: 2rem;
+            div {
+              width: 100%;
+            }
+            .github__link-container {
+              @media screen and (max-width: 668px) {
+                display: none;
+              }
+            }
             .btn {
               display: flex;
               align-items: center;
@@ -275,7 +329,12 @@
               color: var(--text);
               font-weight: 600;
               transition: .2s;
-              @media screen and (max-width: 340px) {
+              @media screen and (max-width: 668px) {
+                padding: 0 1.5rem;
+                height: 3rem;
+                font-size: .75rem;
+              }
+              @media screen and (max-width: 400px) {
                 padding: 0 .75rem;
               }
               &--primary {
@@ -287,6 +346,9 @@
                   background: var(--primary-3);
                   box-shadow: 0 4px 22px -6px var(--primary-a);
                 }
+                @media screen and (max-width: 668px) {
+                  width: 100%;
+                }
               }
               &--ghost {
                 background: var(--secondary-oa4);
@@ -294,19 +356,17 @@
                 &:hover {
                   background: var(--secondary-oa5);
                 }
+                @media screen and (max-width: 668px) {
+                  width: 100%;
+                }
               }
-              &--tertiary {
+              &.github__link {
                 background: transparent;
                 color: var(--primary);
                 padding: 0 1rem;
                 height: unset;
                 &:hover {
                   text-decoration: underline;
-                }
-              }
-              &.github__link {
-                @media screen and (max-width: 400px) {
-                  display: none;
                 }
               }
             }
@@ -326,6 +386,12 @@
           position: relative;
           z-index: 10;
           overflow: hidden;
+          @media screen and (max-width: 1068px) {
+            max-width: 300px;
+          }
+          @media screen and (max-width: 900px) {
+            max-width: unset;
+          }
           &::before {
             content: '';
             position: absolute;
@@ -350,6 +416,9 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            @media screen and (max-width: 1068px) {
+              font-size: 1.5rem;
+            }
           }
           .sub {
             font-size: .75rem;
@@ -428,6 +497,19 @@
                 opacity: .9;
               }
             }
+          }
+        }
+      }
+      .energy__effect-container {
+        &.desktop {
+          @media screen and (max-width: 900px) {
+            display: none;
+          }
+        }
+        &.mobile {
+          display: none;
+          @media screen and (max-width: 900px) {
+            display: unset;
           }
         }
       }
