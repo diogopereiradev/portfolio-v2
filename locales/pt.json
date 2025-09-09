@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "title": "Diogo Pereira - Desenvolvedor Fullstack",
+    "description": "Apaixonado por construir sistemas robustos, seguros e escaláveis. Experiência em front-end, back-end, mobile, desktop e DevOps.",
+    "keywords": "Diogo Pereira, Fullstack Developer, Desenvolvedor Fullstack, Web Development, Desenvolvimento Web, Frontend, Backend, JavaScript, TypeScript, React, Node.js, HTML, CSS, Desenvolvimento Mobile, Mobile Development, Desenvolvimento Desktop, Desktop Development, DevOps, API, Software Engineer, Engenheiro de Software, Programmer, Programador, Developer Portfolio, Portfólio Desenvolvedor"
+  },
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "skills": "Habilidades",
+    "projects": "Projetos",
+    "contact": "Contato"
+  },
+  "header": {
+    "greeting": "OLÁ, EU SOU",
+    "description": "Eu crio produtos digitais resilientes, performáticos e seguros. Unindo um design atraente do frontend, a robustez do backend e a automação do DevOps.",
+    "actions": {
+      "viewProjects": "Ver Projetos",
+      "letsTalk": "Vamos Conversar",
+      "openGithub": "Veja meu GitHub"
+    },
+    "highlight": {
+      "label": "ATUALMENTE",
+      "value": "Criando Experiências impactantes",
+      "sub": "Focado em código de alta qualidade e DX",
+      "points": [
+        "Melhorando performance e acessibilidade",
+        "Desenhando arquiteturas escaláveis",
+        "Prototipando experiências de alta qualidade"
+      ],
+      "stats": {
+        "years": "Anos",
+        "projects": "Projetos"
+      }
+    }
+  }
+}

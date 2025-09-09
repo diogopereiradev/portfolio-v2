@@ -1,0 +1,75 @@
+@use 'sass:color';
+
+$primary: #22ecce;
+$secondary: #151f35;
+$secondary-a: #3a3753;
+$border-layout: #1d263b;
+
+$text-primary: #ffffff;
+$text-opposite: #1c1a2c;
+
+$theme: (
+  background: #181b2e,
+
+  primary: $primary,
+  primary-2: color.adjust($primary, $lightness: -5%),
+  primary-3: color.adjust($primary, $lightness: -10%),
+  primary-4: color.adjust($primary, $lightness: -15%),
+  primary-5: color.adjust($primary, $lightness: -20%),
+
+  primary-a: color.change($primary, $alpha: .75),
+  primary-a2: color.change($primary, $alpha: .50),
+  primary-a3: color.change($primary, $alpha: .25),
+  primary-a4: color.change($primary, $alpha: .15),
+  primary-a5: color.change($primary, $alpha: .08),
+
+  secondary: $secondary,
+  secondary-2: color.adjust($secondary, $lightness: -5%),
+  secondary-3: color.adjust($secondary, $lightness: -10%),
+  secondary-4: color.adjust($secondary, $lightness: -15%),
+  secondary-5: color.adjust($secondary, $lightness: -20%),
+
+  secondary-o: color.adjust($secondary, $lightness: 5%),
+  secondary-o2: color.adjust($secondary, $lightness: 7%),
+  secondary-o3: color.adjust($secondary, $lightness: 9%),
+  secondary-o4: color.adjust($secondary, $lightness: 11%),
+  secondary-o5: color.adjust($secondary, $lightness: 13%),
+
+  secondary-oa: $secondary-a,
+  secondary-oa2: color.adjust($secondary-a, $lightness: -5%),
+  secondary-oa3: color.adjust($secondary-a, $lightness: -7%),
+  secondary-oa4: color.adjust($secondary-a, $lightness: -9%),
+  secondary-oa5: color.adjust($secondary-a, $lightness: -11%),
+
+  secondary-a: color.change($secondary-a, $alpha: .75),
+  secondary-a2: color.change($secondary-a, $alpha: .50),
+  secondary-a3: color.change($secondary-a, $alpha: .25),
+  secondary-a4: color.change($secondary-a, $alpha: .15),
+  secondary-a5: color.change($secondary-a, $alpha: .08),
+
+  text-h: $text-primary,
+  text: color.change($text-primary, $alpha: .85),
+  text-2: color.change($text-primary, $alpha: .65),
+  text-3: color.change($text-primary, $alpha: .45),
+  text-4: color.change($text-primary, $alpha: .25),
+
+  text-o1: $text-opposite,
+  text-o2: color.change($text-opposite, $alpha: .85),
+  text-o3: color.change($text-opposite, $alpha: .65),
+  text-o4: color.change($text-opposite, $alpha: .45),
+  text-o5: color.change($text-opposite, $alpha: .25),
+
+  border-layout: $border-layout,
+  border-layout-2: color.adjust($border-layout, $lightness: -5%),
+  border-layout-3: color.adjust($border-layout, $lightness: -10%),
+  border-layout-4: color.adjust($border-layout, $lightness: -15%),
+  border-layout-5: color.adjust($border-layout, $lightness: -20%),
+
+  border-layout-o: color.adjust($border-layout, $lightness: 5%),
+  border-layout-o2: color.adjust($border-layout, $lightness: 7%),
+  border-layout-o3: color.adjust($border-layout, $lightness: 9%),
+  border-layout-o4: color.adjust($border-layout, $lightness: 11%),
+  border-layout-o5: color.adjust($border-layout, $lightness: 13%),
+
+  radius: 14px,
+) !default;

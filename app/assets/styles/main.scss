@@ -1,0 +1,47 @@
+@use 'themes/dark.scss' as dark;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Load the themes */
+$themes: (
+  dark: dark.$theme
+);
+
+@each $theme-name, $theme-map in $themes {
+  .#{$theme-name} {
+    @each $prop, $value in $theme-map {
+      --#{$prop}: #{$value};
+    }
+  }
+}
+
+:root {
+  @each $prop, $value in dark.$theme {
+    --#{$prop}: #{$value};
+  }
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1568px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  @media screen and (max-width: 340px) {
+    padding: 0 .875rem;
+  }
+}
