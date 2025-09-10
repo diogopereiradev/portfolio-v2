@@ -9,7 +9,8 @@
     "about": "Sobre",
     "skills": "Habilidades",
     "projects": "Projetos",
-    "contact": "Contato"
+    "contact": "Contato",
+    "hireMe": "Contrate-me"
   },
   "header": {
     "greeting": "OLÁ, EU SOU",
@@ -33,5 +34,37 @@
         "projects": "Projetos"
       }
     }
+  },
+  "about": {
+    "greeting": "SOBRE",
+    "title": "Quem Sou Eu",
+    "description": "Eu sou um desenvolvedor de software sempre buscando excelência em meus trabalhos e projetos pessoais.",
+    "paragraphs": [
+      "Com uma paixão por tecnologia desde jovem, comecei minha jornada no desenvolvimento de software há vários anos. Ao longo do tempo, adquiri experiência em diversas áreas, incluindo front-end, back-end, mobile, desktop e DevOps.",
+      "Estou sempre em busca de novos desafios e oportunidades para aprender e crescer como profissional. Se você está procurando um desenvolvedor dedicado e apaixonado para fazer parte do seu próximo projeto, adoraria conversar!"
+    ],
+    "insights": [
+      { "title": "Experiência", "desc": "Experiência em diversas áreas do desenvolvimento de software.", "icon": "material-symbols:auto-awesome-rounded" },
+      { "title": "Aprendizado", "desc": "Adaptação a novas tecnologias e metodologias de trabalho.", "icon": "material-symbols:lightbulb-rounded" },
+      { "title": "Autonomia", "desc": "Capacidade de trabalhar de forma independente e tomar decisões.", "icon": "material-symbols:explore-rounded" },
+      { "title": "Eficiência", "desc": "Otimização de processos e foco em resultados.", "icon": "material-symbols:equalizer-rounded" }
+    ],
+    "timeline": [
+      {
+        "period": "2025 - Atual",
+        "role": "Desenvolvedor Mid-Level",
+        "description": "Atualmente, atuo como Fullstack e DevOps, como Mid-Level pois vi uma oportunidade de crescimento profissional."
+      },
+      {
+        "period": "2023 - 2025",
+        "role": "Desenvolvedor Sênior",
+        "description": "Atuei como desenvolvedor sênior em uma empresa do campo de vendas digitais, liderando o desenvolvimento completo dos projetos."
+      },
+      {
+        "period": "2020 - 2022",
+        "role": "Desenvolvedor Mid-Level",
+        "description": "Atuei como desenvolvedor Mid-Level Fullstack e DevOps, em projetos freelance voltados ao meio de e-commerce."
+      }
+    ]
   }
 }

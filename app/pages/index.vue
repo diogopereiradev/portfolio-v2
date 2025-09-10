@@ -3,9 +3,14 @@
 <template>
   <div class="page--home">
     <HomeHeader />
+    <HomeAbout />
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .page--home {}
+  .page--home {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
 </style>

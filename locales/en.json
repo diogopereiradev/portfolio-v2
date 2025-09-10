@@ -9,7 +9,8 @@
     "about": "About",
     "skills": "Skills",
     "projects": "Projects",
-    "contact": "Contact"
+    "contact": "Contact",
+    "hireMe": "Hire Me"
   },
   "header": {
     "greeting": "HI, I'M",
@@ -33,5 +34,37 @@
         "projects": "Projects"
       }
     }
+  },
+  "about": {
+    "greeting": "ABOUT",
+    "title": "Who I Am",
+    "description": "I'm a software developer always pursuing excellence in my work and personal projects.",
+    "paragraphs": [
+      "With a passion for technology from a young age, I began my journey in software development several years ago. Over time, I gained experience in various areas, including front-end, back-end, mobile, desktop, and DevOps.",
+      "I am always seeking new challenges and opportunities to learn and grow as a professional. If you are looking for a dedicated and passionate developer to be part of your next project, I would love to chat!"
+    ],
+    "insights": [
+      { "title": "Experience", "desc": "Experience in various areas of software development.", "icon": "material-symbols:auto-awesome-rounded" },
+      { "title": "Learning", "desc": "Adaptation to new technologies and work methodologies.", "icon": "material-symbols:lightbulb-rounded" },
+      { "title": "Autonomy", "desc": "Ability to work independently and make decisions.", "icon": "material-symbols:explore-rounded" },
+      { "title": "Efficiency", "desc": "Process optimization and results-oriented focus.", "icon": "material-symbols:equalizer-rounded" }
+    ],
+    "timeline": [
+      {
+        "period": "2025 - Now",
+        "role": "Mid-Level Developer",
+        "description": "Currently, I work as a Fullstack and DevOps developer, at Mid-Level as I saw an opportunity for professional growth."
+      },
+      {
+        "period": "2023 - 2025",
+        "role": "Senior Developer",
+        "description": "I worked as a senior developer at a company in the digital sales field, leading the complete development of projects."
+      },
+      {
+        "period": "2020 - 2022",
+        "role": "Mid-Level Developer",
+        "description": "I worked as a Mid-Level Fullstack and DevOps developer on freelance projects focused on e-commerce."
+      }
+    ]
   }
 }

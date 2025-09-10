@@ -40,8 +40,11 @@ $themes: (
   width: 100%;
   max-width: 1568px;
   margin: 0 auto;
-  padding: 0 1.5rem;
-  @media screen and (max-width: 340px) {
+  padding: 0 4rem;
+  @media screen and (max-width: 992px) {
+    padding: 0 1.5rem;
+  }
+  @media screen and (max-width: 480px) {
     padding: 0 .875rem;
   }
 }

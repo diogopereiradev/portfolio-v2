@@ -89,7 +89,7 @@
           </ul>
           <div class="stats">
             <div class="stat">
-              <span class="stat__value">{{ new Date().getFullYear() - 2016 }}+</span>
+              <span class="stat__value">{{ new Date().getFullYear() - 2018 }}+</span>
               <span class="stat__label">{{ $t('header.highlight.stats.years') }}</span>
             </div>
             <div class="stat">
@@ -220,7 +220,7 @@
               -webkit-background-clip: text;
               background-clip: text;
               -webkit-text-fill-color: transparent;
-              @media screen and (max-width: 1300px) {
+              @media screen and (max-width: 1468px) {
                 font-size: 4.5rem;
               }
               @media screen and (max-width: 920px) {

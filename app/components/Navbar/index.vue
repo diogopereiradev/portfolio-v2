@@ -35,7 +35,7 @@
               <Icon name="mdi:github" size="16" />
             </a>
             <NuxtLink class="btn btn--primary" to="#contact">
-              <span>Hire me</span>
+              <span>{{ $t('nav.hireMe') }}</span>
             </NuxtLink>
             <hr v-if="windowWidth <= 768" class="mobile__navigation-divider" />
             <button v-if="windowWidth <= 768" class="mobile__navigation-btn btn btn--ghost" @click="isMobileMenuOpen = !isMobileMenuOpen">
