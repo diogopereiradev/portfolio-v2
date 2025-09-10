@@ -1,6 +1,32 @@
+<script setup lang="ts">
+  type Insight = {
+    icon: string;
+    title: string;
+    desc: string;
+  };
+
+  type TimelineItem = {
+    period: string;
+    role: string;
+    description: string;
+  };
+
+  const contentEl = ref<HTMLElement | null>(null);
+  const avatarEl = ref<HTMLElement | null>(null);
+  const timelineEl = ref<HTMLElement | null>(null);
+
+  const insights = computed(() => {
+    return $tm('about.insights') as Insight[];
+  });
+
+  const timeline = computed(() => {
+    return $tm('about.timeline') as TimelineItem[];
+  });
+</script>
+
 <template>
   <div class="component--about wrapper">
-    <div class="about__content">
+    <div ref="contentEl" class="about__content">
       <div class="about__section">
         <div class="details__container">
           <div class="label__head-container">
@@ -14,7 +40,7 @@
         </div>
         <div class="about__details">
           <div class="details__main-container">
-            <div class="profile__avatar-container">
+            <div ref="avatarEl" class="profile__avatar-container">
               <NuxtImg class="profile__avatar" src="/profile.png" format="webp" />
             </div>
             <div class="about__paragraphs">
@@ -26,7 +52,7 @@
           <aside class="about__insights">
             <div class="insight__grid">
               <div
-                v-for="(item, idx) in $tm('about.insights')"
+                v-for="(item, idx) in insights"
                 :key="$rt(item.title) + idx"
                 class="insight__card"
               >
@@ -43,21 +69,41 @@
         </div>
       </div>
     </div>
-    <div class="about__timeline">
-      <div v-for="item in $tm('about.timeline')" :key="item.period" class="time__item">
+    <div ref="timelineEl" class="about__timeline">
+      <div v-for="item in timeline" :key="item.period" class="time__item">
         <h4 class="time__period">{{ $rt(item.period) }}</h4>
         <h3 class="time__role">{{ $rt(item.role) }}</h3>
         <p class="time__desc">{{ $rt(item.description) }}</p>
       </div>
+    </div>
+    <div class="energy__cable-container">
+      <EnergyCableEffect
+        :container-el="contentEl"
+        :start-el="avatarEl"
+        :end-el="timelineEl"
+        :start-at="{ x: 0.55, y: 0 }"
+        :end-at="{ x: 0.84, y: -1 }"
+        :thickness="3"
+        :glow-blur="6"
+        :curvature="0.5"
+        :speed="1.5"
+        :start-tangent-angle="100"
+        :end-tangent-angle="60"
+        :tip-handle="1"
+      />
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
   .component--about {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 6.5rem;
+    @media screen and (max-width: 1200px) {
+      gap: 2rem;
+    }
     @media screen and (max-width: 640px) {
       gap: 2.5rem;
     }
@@ -137,11 +183,11 @@
           }
         }
         .about__details {
-          display: flex;
-          align-items: start;
+          display: grid;
+          grid-template-columns: 1fr 445px;
           gap: 2rem;
           @media screen and (max-width: 1200px) {
-            flex-direction: column;
+            grid-template-columns: 1fr;
           }
           .details__main-container {
             display: flex;
@@ -159,10 +205,8 @@
                 height: 260px;
                 border-radius: var(--radius);
                 object-fit: cover;
-                @media screen and (max-width: 1300px) {
-                  width: 180px;
-                  height: 180px;
-                }
+                border: 3px solid var(--primary);
+                animation: pulse 1.2s ease-in-out infinite;
                 @media screen and (max-width: 980px) {
                   width: 200px;
                   height: 200px;
@@ -189,8 +233,10 @@
                 font-size: .975rem;
                 color: var(--text-2);
                 line-height: 1.8;
+                @media screen and (max-width: 1300px) {
+                  font-size: .875rem;
+                }
                 @media screen and (max-width: 640px) {
-                  font-size: .95rem;
                   line-height: 1.7;
                 }
               }
@@ -200,7 +246,7 @@
             position: sticky;
             top: 96px;
             align-self: start;
-            min-width: 520px;
+            width: 100%;
             @media screen and (max-width: 1200px) {
               width: 100%;
               min-width: unset;
@@ -273,10 +319,10 @@
       display: flex;
       flex-direction: row;
       gap: 1.25rem;
-      padding-top: .25rem;
       padding-bottom: .25rem;
+      z-index: 10;
       @media screen and (max-width: 900px) {
-        flex-direction: column;
+        flex-direction: column-reverse;
       }
       .time__item {
         position: relative;
@@ -289,10 +335,17 @@
         border: 1px solid var(--border-layout-2);
         box-shadow: 0 10px 20px -12px var(--secondary-a5), inset 0 1px 0 0 var(--border-layout-o5);
         transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+        &:last-child {
+          background: var(--secondary-o);
+          border: 3px solid var(--primary);
+          animation: pulse 0.8s ease-in-out infinite;
+        }
         &:hover {
-          transform: translateY(-2px);
-          border-color: var(--border-layout-o2);
-          box-shadow: 0 14px 26px -12px var(--secondary-a5), 0 0 0 1px var(--primary-a4) inset;
+          &:not(:last-child) {
+            transform: translateY(-2px);
+            border-color: var(--border-layout-o2);
+            box-shadow: 0 14px 26px -12px var(--secondary-a5), 0 0 0 1px var(--primary-a4) inset;
+          }
         }
         .time__period {
           font-size: .75rem;
@@ -325,6 +378,11 @@
             line-height: 1.6;
           }
         }
+      }
+    }
+    .energy__cable-container {
+      @media screen and (max-width: 1200px) {
+        display: none;
       }
     }
   }

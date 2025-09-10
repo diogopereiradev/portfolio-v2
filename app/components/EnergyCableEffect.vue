@@ -50,10 +50,9 @@
   
     svgWidth.value = Math.round(cRect.width);
     svgHeight.value = Math.round(cRect.height);
-  
-    const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
-    const sa = { x: props.startAt!.x, y: clamp01(props.startAt!.y) };
-    const ea = { x: props.endAt!.x, y: clamp01(props.endAt!.y) };
+
+    const sa = { x: props.startAt!.x, y: props.startAt!.y };
+    const ea = { x: props.endAt!.x, y: props.endAt!.y };
 
     const x1 = sRect.left - cRect.left + lerp(0, sRect.width, sa.x);
     const y1 = sRect.top - cRect.top + lerp(0, sRect.height, sa.y);

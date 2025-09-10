@@ -4,6 +4,7 @@
   <div class="page--home">
     <HomeHeader />
     <HomeAbout />
+    <HomeProjects />
   </div>
 </template>
 
