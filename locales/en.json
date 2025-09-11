@@ -66,5 +66,35 @@
         "description": "Currently, I work as a Fullstack and DevOps developer, at Mid-Level as I saw an opportunity for professional growth."
       }
     ]
+  },
+  "projects": {
+    "greeting": "PROJECTS",
+    "title": "My Work",
+    "description": "Here are some of the projects I've worked on recently.",
+    "searchbar": {
+      "placeholder": "Search by name or technology..."
+    },
+    "list": {
+      "httpzen": {
+        "title": "HTTPZen",
+        "description": "A modern beautiful HTTP client for the terminal, inspired by HTTPie and CURL."
+      },
+      "pulsar": {
+        "title": "Pulsar",
+        "description": "Create beautiful and customizable documentations to your projects in seconds."
+      },
+      "devy": {
+        "title": "Devy",
+        "description": "An app that will help you concentrate on your studies, it provides sound tools, a timer, etc."
+      },
+      "pixarti": {
+        "title": "Pixarti",
+        "description": "A page to create pixel arts and export to pure CSS."
+      }
+    },
+    "viewLive": "View Live",
+    "viewCode": "Source Code",
+    "showMore": "See More",
+    "noProjects": "No projects match your search."
   }
 }
