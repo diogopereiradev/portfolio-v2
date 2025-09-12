@@ -25,7 +25,7 @@
 </script>
 
 <template>
-  <div class="component--about wrapper">
+  <div id="about" class="component--about wrapper">
     <div ref="contentEl" class="about__content">
       <div class="about__section">
         <div class="details__container">
@@ -69,28 +69,28 @@
         </div>
       </div>
     </div>
+    <div class="energy__cable-container">
+      <EnergyCableEffect
+        :container-el="contentEl"
+        :start-el="avatarEl"
+        :end-el="timelineEl"
+        :start-at="{ x: 0.77, y: 0.05 }"
+        :end-at="{ x: 0.81, y: -0.92 }"
+        :thickness="3"
+        :glow-blur="6"
+        :curvature="1.1"
+        :speed="1.5"
+        :start-tangent-angle="120"
+        :end-tangent-angle="30"
+        :tip-handle="1"
+      />
+    </div>
     <div ref="timelineEl" class="about__timeline">
       <div v-for="item in timeline" :key="item.period" class="time__item">
         <h4 class="time__period">{{ $rt(item.period) }}</h4>
         <h3 class="time__role">{{ $rt(item.role) }}</h3>
         <p class="time__desc">{{ $rt(item.description) }}</p>
       </div>
-    </div>
-    <div class="energy__cable-container">
-      <EnergyCableEffect
-        :container-el="contentEl"
-        :start-el="avatarEl"
-        :end-el="timelineEl"
-        :start-at="{ x: 0.55, y: 0 }"
-        :end-at="{ x: 0.84, y: -1 }"
-        :thickness="3"
-        :glow-blur="6"
-        :curvature="0.5"
-        :speed="1.5"
-        :start-tangent-angle="100"
-        :end-tangent-angle="60"
-        :tip-handle="1"
-      />
     </div>
   </div>
 </template>
@@ -100,7 +100,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 6.5rem;
     @media screen and (max-width: 1200px) {
       gap: 2rem;
     }
@@ -321,6 +320,10 @@
       gap: 1.25rem;
       padding-bottom: .25rem;
       z-index: 10;
+      margin-top: 6.5rem;
+      @media screen and (max-width: 1200px) {
+        margin-top: 0;
+      }
       @media screen and (max-width: 900px) {
         flex-direction: column-reverse;
       }

@@ -106,7 +106,7 @@
 </script>
 
 <template>
-  <div class="component--projects wrapper">
+  <div id="projects" class="component--projects wrapper">
     <div class="grid__container">
       <GridEffect thickness="1px" :box-width="60" :box-height="60" />
     </div> 

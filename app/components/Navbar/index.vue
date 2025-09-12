@@ -18,7 +18,7 @@
         </div>
         <div class="frame__section navigation__section">
           <ul class="navbar__nav">
-            <li><NuxtLink to="#navbar">{{ $t('nav.home') }}</NuxtLink></li>
+            <li><NuxtLink to="#header">{{ $t('nav.home') }}</NuxtLink></li>
             <li><NuxtLink to="#about">{{ $t('nav.about') }}</NuxtLink></li>
             <li><NuxtLink to="#projects">{{ $t('nav.projects') }}</NuxtLink></li>
             <li><NuxtLink to="#skills">{{ $t('nav.skills') }}</NuxtLink></li>

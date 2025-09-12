@@ -5,6 +5,7 @@
     <HomeHeader />
     <HomeAbout />
     <HomeProjects />
+    <HomeSkills />
   </div>
 </template>
 
@@ -12,7 +13,7 @@
   .page--home {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 10rem;
     padding-bottom: 4rem;
   }
 </style>

@@ -96,5 +96,13 @@
     "viewCode": "Source Code",
     "showMore": "See More",
     "noProjects": "No projects match your search."
+  },
+  "skills": {
+    "greeting": "SKILLS",
+    "title": "My Expertise",
+    "description": "Here are some of the skills and technologies I excel in.",
+    "searchbar": {
+      "placeholder": "Search by name or category..."
+    }
   }
 }

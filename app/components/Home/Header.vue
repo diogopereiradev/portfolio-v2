@@ -6,7 +6,7 @@
 </script>
 
 <template>
-  <div class="component--header wrapper">
+  <div id="header" class="component--header wrapper">
     <div class="blurred__effect-container">
       <div class="blurred__effect left"></div>
       <div class="blurred__effect right"></div>

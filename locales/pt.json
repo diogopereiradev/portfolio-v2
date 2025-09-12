@@ -96,5 +96,13 @@
     "viewCode": "Código Fonte",
     "showMore": "Ver Mais",
     "noProjects": "Nenhum projeto encontrado na sua busca."
+  },
+  "skills": {
+    "greeting": "HABILIDADES",
+    "title": "Minha Especialização",
+    "description": "Aqui estão algumas das habilidades e tecnologias em que sou especialista.",
+    "searchbar": {
+      "placeholder": "Pesquisar por nome ou tecnologia..."
+    }
   }
 }
