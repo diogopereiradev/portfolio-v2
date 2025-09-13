@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-  import { ProjectAreas, ProjectTechnologies, type ProjectArea, type ProjectTechnology } from '~/types/project';
-
   const { t } = useI18n();
   const state = reactive({
     search: '',
@@ -11,14 +9,16 @@
   const showMoreEl = ref<HTMLElement | null>(null);
 
   const windowSize = useWindowWidth();
+  const areas = useProgrammingAreas();
+  const technologies = useTechnologies();
 
   type Project = {
     title: string;
     description: string;
     thumbnail: string;
-    stacks: ProjectArea[];
-    mainTechs: ProjectTechnology[];
-    techs: ProjectTechnology[];
+    stacks: ProgrammingArea[];
+    mainTechs: Technology[];
+    techs: Technology[];
     live?: string;
     repoLink?: string;
   };
@@ -29,16 +29,16 @@
         title: t('projects.list.httpzen.title'),
         description: t('projects.list.httpzen.description'),
         thumbnail: '/projects/httpzen.png',
-        stacks: [ProjectAreas.FULLSTACK],
-        mainTechs: [ProjectTechnologies.GOLANG, ProjectTechnologies.TDD, ProjectTechnologies.VUE],
+        stacks: [areas.FULLSTACK],
+        mainTechs: [technologies.GOLANG, technologies.TDD, technologies.VUE],
         techs: [
-          ProjectTechnologies.TDD,
-          ProjectTechnologies.BUBBLETEA,
-          ProjectTechnologies.LIPGLOSS,
-          ProjectTechnologies.VUE,
-          ProjectTechnologies.NUXT,
-          ProjectTechnologies.SASS,
-          ProjectTechnologies.GOLANG
+          technologies.TDD,
+          technologies.BUBBLETEA,
+          technologies.LIPGLOSS,
+          technologies.VUE,
+          technologies.NUXT,
+          technologies.SASS,
+          technologies.GOLANG
         ],
         live: 'https://httpzen.diogopereira.dev',
         repoLink: 'https://github.com/diogopereiradev/httpzen'
@@ -47,14 +47,14 @@
         title: t('projects.list.devy.title'),
         description: t('projects.list.devy.description'),
         thumbnail: '/projects/devy.png',
-        stacks: [ProjectAreas.DESKTOP],
-        mainTechs: [ProjectTechnologies.TAURI, ProjectTechnologies.REACT, ProjectTechnologies.RUST],
+        stacks: [areas.DESKTOP],
+        mainTechs: [technologies.TAURI, technologies.REACT, technologies.RUST],
         techs: [
-          ProjectTechnologies.TAURI,
-          ProjectTechnologies.VITE,
-          ProjectTechnologies.REACT,
-          ProjectTechnologies.STYLED_COMPONENTS,
-          ProjectTechnologies.RUST,
+          technologies.TAURI,
+          technologies.VITE,
+          technologies.REACT,
+          technologies.STYLED_COMPONENTS,
+          technologies.RUST,
         ],
         live: 'https://github.com/diogopereiradev/devy',
         repoLink: 'https://github.com/diogopereiradev/devy'
@@ -63,13 +63,13 @@
         title: t('projects.list.pulsar.title'),
         description: t('projects.list.pulsar.description'),
         thumbnail: '/projects/pulsar.png',
-        stacks: [ProjectAreas.FRONTEND, ProjectAreas.BROWSER_APP],
-        mainTechs: [ProjectTechnologies.VUE, ProjectTechnologies.NUXT, ProjectTechnologies.PRIMEVUE, ProjectTechnologies.TAILWIND],
+        stacks: [areas.FRONTEND],
+        mainTechs: [technologies.VUE, technologies.NUXT, technologies.PRIMEVUE, technologies.TAILWIND],
         techs: [
-          ProjectTechnologies.VUE,
-          ProjectTechnologies.NUXT,
-          ProjectTechnologies.PRIMEVUE,
-          ProjectTechnologies.TAILWIND,
+          technologies.VUE,
+          technologies.NUXT,
+          technologies.PRIMEVUE,
+          technologies.TAILWIND,
         ],
         live: 'https://pulsar.diogopereira.dev',
         repoLink: 'https://github.com/diogopereiradev/pulsar'
@@ -81,12 +81,12 @@
         title: t('projects.list.pixarti.title'),
         description: t('projects.list.pixarti.description'),
         thumbnail: '/projects/pixarti.png',
-        stacks: [ProjectAreas.FRONTEND, ProjectAreas.BROWSER_APP],
-        mainTechs: [ProjectTechnologies.REACT, ProjectTechnologies.VITE, ProjectTechnologies.STYLED_COMPONENTS],
+        stacks: [areas.FRONTEND],
+        mainTechs: [technologies.REACT, technologies.VITE, technologies.STYLED_COMPONENTS],
         techs: [
-          ProjectTechnologies.REACT,
-          ProjectTechnologies.VITE,
-          ProjectTechnologies.STYLED_COMPONENTS,
+          technologies.REACT,
+          technologies.VITE,
+          technologies.STYLED_COMPONENTS,
         ],
         live: 'https://pixarti.vercel.app',
         repoLink: 'https://github.com/diogopereiradev/pixarti'

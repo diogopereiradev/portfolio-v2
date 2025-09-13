@@ -103,6 +103,8 @@
     "description": "Aqui estão algumas das habilidades e tecnologias em que sou especialista.",
     "searchbar": {
       "placeholder": "Pesquisar por nome ou tecnologia..."
-    }
+    },
+    "expandButton": "Mostrar mais",
+    "collapseButton": "Mostrar menos"
   }
 }

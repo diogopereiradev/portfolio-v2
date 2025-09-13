@@ -103,6 +103,8 @@
     "description": "Here are some of the skills and technologies I excel in.",
     "searchbar": {
       "placeholder": "Search by name or category..."
-    }
+    },
+    "expandButton": "Show more",
+    "collapseButton": "Show less"
   }
 }
