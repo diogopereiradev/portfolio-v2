@@ -60,5 +60,11 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true
     }
+  },
+
+  vite: {
+    define: {
+      '__VUE_PROD_HYDRATION_MISMATCH_DETAILS__': true
+    }
   }
 })
