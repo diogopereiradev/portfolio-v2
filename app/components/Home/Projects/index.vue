@@ -28,7 +28,7 @@
       {
         title: t('projects.list.httpzen.title'),
         description: t('projects.list.httpzen.description'),
-        thumbnail: '/projects/httpzen.png',
+        thumbnail: '/httpzen.png',
         stacks: [areas.FULLSTACK],
         mainTechs: [technologies.GOLANG, technologies.TDD, technologies.VUE],
         techs: [
@@ -46,7 +46,7 @@
       {
         title: t('projects.list.devy.title'),
         description: t('projects.list.devy.description'),
-        thumbnail: '/projects/devy.png',
+        thumbnail: '/devy.png',
         stacks: [areas.DESKTOP],
         mainTechs: [technologies.TAURI, technologies.REACT, technologies.RUST],
         techs: [
@@ -62,7 +62,7 @@
       {
         title: t('projects.list.pulsar.title'),
         description: t('projects.list.pulsar.description'),
-        thumbnail: '/projects/pulsar.png',
+        thumbnail: '/pulsar.png',
         stacks: [areas.FRONTEND],
         mainTechs: [technologies.VUE, technologies.NUXT, technologies.PRIMEVUE, technologies.TAILWIND],
         techs: [
@@ -80,7 +80,7 @@
       list.push({
         title: t('projects.list.pixarti.title'),
         description: t('projects.list.pixarti.description'),
-        thumbnail: '/projects/pixarti.png',
+        thumbnail: '/pixarti.png',
         stacks: [areas.FRONTEND],
         mainTechs: [technologies.REACT, technologies.VITE, technologies.STYLED_COMPONENTS],
         techs: [
