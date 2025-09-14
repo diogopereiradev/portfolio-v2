@@ -13,7 +13,7 @@ export type Technology = {
 };
 
 const areas = useProgrammingAreas();
-export const technologies = (t: (path: string) => string, tm: (path: string) => { loc: { source: string } }[]) => {
+export const technologies = (t: (path: string) => string, tm: (path: string) => unknown) => {
   const techs = {
     VUE: {
       name: 'Vue.js',
@@ -626,7 +626,29 @@ export const technologies = (t: (path: string) => string, tm: (path: string) => 
         {
           ...tech,
           description: extras.description ?? (() => t(`skills.knowledges.${key}.description`)),
-          knowledges: extras.knowledges ?? (() => tm(`skills.knowledges.${key}.list`).map(k => k.loc.source)),
+          knowledges: extras.knowledges ?? (() => {
+            const raw = tm(`skills.knowledges.${key}.list`) as unknown;
+            if (Array.isArray(raw)) {
+              return raw
+                .map((item: unknown) => {
+                  if (typeof item === 'string') return item;
+                  if (item && typeof item === 'object') {
+
+                    const obj = item as Record<string, unknown>;
+                    const loc = (obj as { loc?: { source?: unknown } }).loc;
+                    const source = typeof loc?.source === 'string' ? loc.source : undefined;
+
+                    if (source) return source;
+                    
+                    const value = (obj as { value?: unknown }).value;
+                    if (typeof value === 'string') return value;
+                  }
+                  return '';
+                })
+                .filter((s): s is string => Boolean(s && typeof s === 'string'));
+            }
+            return [] as string[];
+          }),
         },
       ];
     }),
@@ -635,6 +657,6 @@ export const technologies = (t: (path: string) => string, tm: (path: string) => 
 };
 
 type TechnologyKeys = keyof ReturnType<typeof technologies>;
-export function useTechnologies(t: (path: string) => string, tm: (path: string) => { loc: { source: string } }[]): Record<TechnologyKeys, Technology> {
+export function useTechnologies(t: (path: string) => string, tm: (path: string) => unknown): Record<TechnologyKeys, Technology> {
   return technologies(t, tm) as unknown as Record<TechnologyKeys, Technology>;
 }
