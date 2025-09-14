@@ -10,7 +10,8 @@
     "skills": "Skills",
     "projects": "Projects",
     "contact": "Contact",
-    "hireMe": "Hire Me"
+    "hireMe": "Hire Me",
+    "github": "Github"
   },
   "header": {
     "greeting": "HI, I'M",
@@ -184,5 +185,34 @@
       "BUBBLETEA": { "description": "I build responsive CLIs and TUIs in Go using the Bubble Tea framework.", "list": ["TEA architecture (Model, Msg, Update, View)", "Custom components and messages", "Reactive state management", "Async updates", "Layouts and navigation", "Integration with Lipgloss"] },
       "LIPGLOSS": { "description": "I style terminal interfaces with Lipgloss, creating layouts and themes.", "list": ["Styles and text rendering", "Colors, borders, and margins", "Composition and alignment", "Responsive terminal layouts", "Consistent theming", "Integration with Bubble Tea"] }
     }
+  },
+  "contact": {
+    "greeting": "CONTACT",
+    "title": "Get In Touch",
+    "description": "Whether you have a project in mind, need assistance, or just want to say hello, feel free to reach out!",
+    "items": {
+      "email": "Email",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "discord": "Discord"
+    },
+    "actions": {
+      "copy": "Copy",
+      "copied": "Copied!",
+      "open": "Open",
+      "sendEmail": "Send Email"
+    },
+    "cta": {
+      "title": "Let’s build something cool",
+      "subtitle": "Open to freelance, roles and collabs. Send me an email or connect on LinkedIn.",
+      "primary": "Send email",
+      "secondary": "Talk on LinkedIn"
+    }
+  }
+  ,
+  "footer": {
+    "rights": "All rights reserved.",
+    "madeWith": "Made with <3, code and coffee.",
+    "by": "by"
   }
 }

@@ -4,6 +4,7 @@
     <div class="layout__page">
       <NuxtPage />
     </div>
+    <HomeFooter />
   </div>
 </template>
 
@@ -14,6 +15,7 @@
     min-height: 100vh;
     .layout__page {
       flex: 1;
+      margin-bottom: 6rem;
     }
   }
 </style>

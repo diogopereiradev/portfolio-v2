@@ -149,7 +149,8 @@
         .icon-btn.close__btn {
           background: var(--secondary-o2);
           border: 1px solid var(--border-layout-o2);
-          width: 42px; height: 42px;
+          width: 42px;
+          height: 42px;
           border-radius: var(--radius);
           display: flex;
           align-items: center;

@@ -10,7 +10,8 @@
     "skills": "Habilidades",
     "projects": "Projetos",
     "contact": "Contato",
-    "hireMe": "Contrate-me"
+    "hireMe": "Contrate-me",
+    "github": "Github"
   },
   "header": {
     "greeting": "OLÁ, EU SOU",
@@ -184,5 +185,34 @@
       "BUBBLETEA": { "description": "Crio CLIs e TUI responsivas em Go usando o framework Bubble Tea.", "list": ["Arquitetura TEA (Model, Msg, Update, View)", "Componentes e mensagens personalizadas", "Gerenciamento de estado reativo", "Atualizações assíncronas", "Layouts e navegação", "Integração com Lipgloss"] },
       "LIPGLOSS": { "description": "Estilizo interfaces de terminal com Lipgloss, criando layouts e temas atraentes.", "list": ["Styles e renderização de texto", "Cores, bordas e margens", "Composição e alinhamento", "Layouts responsivos no terminal", "Tematização consistente", "Integração com Bubble Tea"] }
     }
+  },
+  "contact": {
+    "greeting": "CONTATO",
+    "title": "Entre em Contato",
+    "description": "Se você tem um projeto em mente, precisa de assistência ou apenas quer dizer olá, sinta-se à vontade para entrar em contato!",
+    "items": {
+      "email": "Email",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "discord": "Discord"
+    },
+    "actions": {
+      "copy": "Copiar",
+      "copied": "Copiado!",
+      "open": "Abrir",
+      "sendEmail": "Enviar Email"
+    },
+    "cta": {
+      "title": "Vamos construir algo legal",
+      "subtitle": "Estou disponível para freelas, vagas e colabs. Me envie um e‑mail ou conecte pelo LinkedIn.",
+      "primary": "Enviar e‑mail",
+      "secondary": "Falar no LinkedIn"
+    }
+  }
+  ,
+  "footer": {
+    "rights": "Todos os direitos reservados.",
+    "madeWith": "Feito com <3, código e café.",
+    "by": "por"
   }
 }

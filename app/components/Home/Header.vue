@@ -327,8 +327,8 @@
               cursor: pointer;
               font: inherit;
               font-size: .875rem;
-              padding: 0 3rem;
-              height: 3.25rem;
+              padding: 0 2.5rem;
+              height: 3rem;
               border-radius: var(--radius);
               background-color: var(--secondary-2);
               color: var(--text);

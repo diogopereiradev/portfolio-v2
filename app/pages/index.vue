@@ -4,8 +4,9 @@
   <div class="page--home">
     <HomeHeader />
     <HomeAbout />
-    <HomeProjects />
     <HomeSkills />
+    <HomeProjects />
+    <HomeContact />
   </div>
 </template>
 
