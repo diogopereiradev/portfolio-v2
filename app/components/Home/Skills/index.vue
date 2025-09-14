@@ -1,11 +1,22 @@
 <script lang="ts" setup>
+  const { t, tm } = useI18n();
+  const windowWidth = useWindowWidth();
+
   const areas = useProgrammingAreas();
-  const techs = useTechnologies();
+  const techs = useTechnologies(t, tm);
   const state = reactive({
     search: '',
     filter: undefined as ProgrammingArea | undefined,
     selectedSkill: Object.values(techs).sort((a, b) => (a?.priority ?? Number.MAX_SAFE_INTEGER) - (b?.priority ?? Number.MAX_SAFE_INTEGER))[0] as Technology | undefined,
     isTechsExpanded: false,
+  });
+
+  const techsCollapsedLimit = computed(() => {
+    if (windowWidth.value >= 1400) return 6;
+    if (windowWidth.value >= 1200) return 5;
+    if (windowWidth.value >= 768) return 4;
+    if (windowWidth.value >= 640) return 3;
+    return 2;
   });
 
   const skills = computed(() => {
@@ -19,9 +30,45 @@
       });
 
     return {
-      result: result.slice(0, state.search.length > 0 || state.isTechsExpanded ? undefined : 6),
-      hasMore: result.length > 6,
+      seoSkills: result.map(s => ({
+        name: s.name,
+        startAt: s.startAt,
+        description: s?.description?.(),
+        knowledges: s?.knowledges?.() || []
+      })),
+      result: result.slice(0, state.search.length > 0 || state.isTechsExpanded ? undefined : techsCollapsedLimit.value),
+      hasMore: result.length > techsCollapsedLimit.value,
     };
+  });
+
+  const experienceYears = computed(() => {
+    const start = state.selectedSkill?.startAt;
+    if (!start) return undefined;
+
+    const startDate = new Date(start);
+    if (Number.isNaN(startDate.getTime())) return undefined;
+
+    const now = new Date();
+    const diffMs = now.getTime() - startDate.getTime();
+
+    const years = diffMs / (1000 * 60 * 60 * 24 * 365.25);
+
+    return Math.max(0, Math.floor(years));
+  });
+
+  const experienceMonths = computed(() => {
+    const start = state.selectedSkill?.startAt;
+    if (!start) return undefined;
+
+    const startDate = new Date(start);
+    if (Number.isNaN(startDate.getTime())) return undefined;
+
+    const now = new Date();
+    const diffMs = now.getTime() - startDate.getTime();
+
+    const months = diffMs / (1000 * 60 * 60 * 24 * 30.44);
+
+    return Math.max(0, Math.floor(months));
   });
 
   watch(() => state.isTechsExpanded, () => {
@@ -36,6 +83,7 @@
 
 <template>
   <div id="skills" class="component--skills wrapper">
+    <div class="seo__hidden-skills" :style="{ display: 'none' }">{{ skills.seoSkills }}</div>
     <div class="skills__content">
       <div class="skills__section">
         <div class="details__container">
@@ -99,6 +147,43 @@
             </button>
           </div>
         </div>
+        <Transition name="fade-slide" mode="out-in">
+          <div
+            v-if="state.selectedSkill"
+            :key="state.selectedSkill.name"
+            class="skill__infos"
+            :style="{ '--icon-color': state.selectedSkill.color }"
+          >
+            <div class="left">
+              <div class="header">
+                <div class="title__container">
+                  <div class="icon">
+                    <Icon :name="state.selectedSkill.icon" size="20" />
+                  </div>
+                  <h4 class="title">{{ state.selectedSkill.name }}</h4>
+                </div>
+                <span v-if="state.selectedSkill.startAt && (experienceYears || 0) > 0" class="since__badge">
+                  {{ $t('skills.since', { date: new Date(state.selectedSkill.startAt).getFullYear() }) }}
+                  <template v-if="experienceYears !== undefined">
+                    {{ $t('skills.approxYears', { years: experienceYears }) }}
+                  </template>
+                </span>
+                <span v-if="state.selectedSkill.startAt && (experienceMonths || 0) > 0 && (experienceYears || 0) < 1" class="since__badge">
+                  {{ $t('skills.since', { date: new Date(state.selectedSkill.startAt).getFullYear() }) }}
+                  <template v-if="experienceMonths !== undefined">
+                    {{ $t('skills.approxMonths', { months: experienceMonths }) }}
+                  </template>
+                </span>
+              </div>
+              <p class="skill__description">{{ state.selectedSkill.description() }}</p>
+            </div>
+            <ul class="knowledges">
+              <li v-for="knowledge in state.selectedSkill.knowledges()" :key="knowledge">
+                {{ knowledge }}
+              </li>
+            </ul>
+          </div>
+        </Transition>
       </div>
     </div>
   </div>
@@ -118,7 +203,7 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        gap: 4rem;
+        gap: 2rem;
         .details__container {
           display: flex;
           flex-direction: column;
@@ -181,6 +266,11 @@
             justify-content: space-between;
             gap: 1rem;
             width: 100%;
+            @media screen and (max-width: 1000px) {
+              justify-content: unset;
+              align-items: unset;
+              flex-direction: column;
+            }
             .searchbar__container {
               width: 100%;
               max-width: 500px;
@@ -218,6 +308,21 @@
             grid-template-columns: repeat(7, 1fr);
             gap: 1rem;
             margin-top: 3rem;
+            @media screen and (max-width: 1400px) {
+              grid-template-columns: repeat(6, 1fr);
+            }
+            @media screen and (max-width: 1200px) {
+              grid-template-columns: repeat(5, 1fr);
+            }
+            @media screen and (max-width: 768px) {
+              grid-template-columns: repeat(4, 1fr);
+            }
+            @media screen and (max-width: 640px) {
+              grid-template-columns: repeat(3, 1fr);
+            }
+            @media screen and (max-width: 480px) {
+              grid-template-columns: repeat(2, 1fr);
+            }
             .tech__chip {
               display: flex;
               align-items: center;
@@ -271,7 +376,7 @@
               height: 3.125rem;
               border-radius: var(--radius);
               border: 1px solid var(--border-layout-o3);
-              background: var(--primary-a5);
+              background: var(--secondary-o2);
               transition: .2s ease;
               position: relative;
               overflow: hidden;
@@ -285,14 +390,134 @@
                 transition: .2s ease;
               }
               .title {
-                font-size: .675rem;
+                font-size: .75rem;
                 font-weight: 600;
                 color: var(--text);
               }
             }
           }
         }
+        .skill__infos {
+          position: relative;
+          display: grid;
+          grid-template-columns: 500px 1fr;
+          gap: 2rem;
+          padding: 1.25rem;
+          border-radius: var(--radius);
+          border: 1px solid var(--border-layout-o3);
+          background: var(--secondary);
+          overflow: hidden;
+          @media screen and (max-width: 1400px) {
+            grid-template-columns: 1fr;
+          }
+          .left {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            .header {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 1rem;
+              .title__container {
+                display: flex;
+                align-items: center;
+                gap: .75rem;
+                .icon {
+                  display: grid;
+                  place-items: center;
+                  min-width: 2.625rem;
+                  height: 2.625rem;
+                  border-radius: calc(var(--radius) - 4px);
+                  background: color-mix(in oklab, var(--icon-color), transparent 86%);
+                  color: var(--icon-color);
+                  border: 1px solid color-mix(in oklab, var(--icon-color), transparent 70%);
+                  @media screen and (max-width: 400px) {
+                    min-width: 2rem;
+                    height: 2rem;
+                  }
+                }
+                .title {
+                  font-size: 1.125rem;
+                  font-weight: 700;
+                  color: var(--text);
+                  letter-spacing: .2px;
+                  @media screen and (max-width: 400px) {
+                    font-size: .875rem;
+                  }
+                }
+              }
+              .since__badge {
+                display: inline-flex;
+                align-items: center;
+                height: 28px;
+                padding: 0 .625rem;
+                border-radius: var(--radius);
+                border: 1px solid var(--secondary-oa);
+                background: var(--secondary-oa4);
+                color: var(--text-2);
+                font-size: .7rem;
+                font-weight: 700;
+                text-wrap: nowrap;
+              }
+            }
+          }
+          .skill__description {
+            font-size: .875rem;
+            line-height: 1.6;
+            color: var(--text-3);
+            @media screen and (max-width: 400px) {
+              font-size: .75rem;
+            }
+          }
+          .knowledges {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: .5rem .75rem;
+            margin-top: .5rem;
+            padding: 0;
+            @media screen and (max-width: 768px) {
+              grid-template-columns: 1fr;
+            }
+            li {
+              position: relative;
+              display: flex;
+              align-items: center;
+              gap: .5rem;
+              padding: 0 0 0 1.75rem;
+              color: var(--text-2);
+              font-size: .875rem;
+              font-weight: 500;
+              @media screen and (max-width: 500px) {
+                font-size: .75rem;
+              }
+              &::before {
+                content: '';
+                position: absolute;
+                left: .6rem;
+                width: .5rem;
+                height: .5rem;
+                border-radius: 50%;
+                background: var(--icon-color);
+                box-shadow: 0 0 0 3px color-mix(in oklab, var(--icon-color), transparent 85%);
+              }
+            }
+          }
+        }
       }
     }
+  }
+  .fade-slide-enter-active,
+  .fade-slide-leave-active {
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .fade-slide-enter-from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  .fade-slide-leave-to {
+    opacity: 0;
+    transform: translateY(-6px);
   }
 </style>

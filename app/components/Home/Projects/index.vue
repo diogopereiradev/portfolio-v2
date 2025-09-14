@@ -10,7 +10,7 @@
 
   const windowSize = useWindowWidth();
   const areas = useProgrammingAreas();
-  const technologies = useTechnologies();
+  const technologies = useTechnologies(t);
 
   type Project = {
     title: string;
@@ -316,9 +316,11 @@
                 &:last-child {
                   border: 3px solid var(--primary) !important;
                   animation: pulse 0.8s ease-in-out infinite !important;
+                  background: var(--secondary) !important;
                 }
               }
               &:nth-child(2n+1) {
+                background: var(--secondary) !important;
                 border: 3px solid var(--primary) !important;
                 animation: pulse 0.8s ease-in-out infinite !important;
                 @media screen and (max-width: 992px) {
@@ -333,6 +335,7 @@
                     animation: none !important;
                   }
                   &:last-child {
+                    background: var(--secondary) !important;
                     border: 3px solid var(--primary) !important;
                     animation: pulse 0.8s ease-in-out infinite !important;
                   }

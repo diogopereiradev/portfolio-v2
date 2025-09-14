@@ -1,20 +1,21 @@
 <script lang="ts" setup>
-  import type { ProjectArea, ProjectTechnology } from '~/types/project';
+  import type { ProgrammingArea } from '~/composables/use-areas';
+  import type { Technology } from '~/composables/use-technologies';
 
   defineProps<{
     title: string;
     description: string;
     thumbnail: string;
-    stacks: ProjectArea[];
-    mainTechs: ProjectTechnology[];
-    techs: ProjectTechnology[];
+    stacks: ProgrammingArea[];
+    mainTechs: Technology[];
+    techs: Technology[];
     live?: string;
     repoLink?: string;
   }>();
 </script>
 
 <template>
-  <a :href="live" target="_blank" class="component--project__card">
+  <a :href="live" target="_blank" rel="noopener noreferrer" class="component--project__card">
     <NuxtImg :src="thumbnail" alt="project-thumbnail" />
     <div class="project__header">
       <h3 class="project__title">{{ title }}</h3>
@@ -85,24 +86,33 @@
     display: flex;
     flex-direction: column;
     gap: .75rem;
-    background: var(--secondary-o);
+    background: linear-gradient(
+      135deg,
+      var(--secondary-a5) 0%,
+      var(--secondary-a4) 100%
+    );
     border: 1px solid var(--border-layout-o3);
-    border-radius: 16px;
+    border-radius: 1rem;
     padding: 1.125rem;
     position: relative;
     overflow: hidden;
-    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    transition: .25s ease;
     &:hover {
       transform: translateY(-4px);
-      box-shadow: 0 18px 34px -18px rgba(0,0,0,.75);
+      border-color: var(--primary-a3);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,.08) inset,
+        0 0 0 1px rgba(255,255,255,.03) inset,
+        0 24px 42px -20px rgba(0,0,0,.3),
+        0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent);
     }
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(1000px 200px at 0% 0%, var(--primary-a5), transparent 40%);
-      pointer-events: none;
-      mix-blend-mode: overlay;
+    &:focus-visible {
+      outline: none;
+      border-color: var(--primary-3);
+      box-shadow:
+        0 0 0 3px color-mix(in srgb, var(--primary) 32%, transparent);
     }
     img {
       width: 100%;
@@ -110,6 +120,8 @@
       object-fit: cover;
       border-radius: var(--radius);
       margin-bottom: 1rem;
+      border: 1px solid var(--border-layout-o3);
+      box-shadow: 0 8px 22px -12px rgba(0,0,0,.3);
     }
     .project__header {
       display: flex;
@@ -168,12 +180,14 @@
         flex-wrap: wrap;
         list-style-type: none;
         li {
-          background: var(--secondary-o2);
+          background: linear-gradient(180deg, var(--secondary-a5), var(--secondary-a4));
           border: 1px solid var(--border-layout-o3);
-          border-radius: 8px;
-          padding: .15rem .4rem;
+          border-radius: 10px;
+          padding: .2rem .5rem;
           color: var(--text-2);
           font-size: .7rem;
+          backdrop-filter: blur(10px) saturate(1.1);
+          -webkit-backdrop-filter: blur(10px) saturate(1.1);
         }
       }
     }
@@ -187,20 +201,24 @@
         align-items: center;
         gap: .4rem;
         height: 36px;
-        padding: 0 .75rem;
-        border-radius: 10px;
+        padding: 0 .85rem;
+        border-radius: 12px;
         border: 1px solid var(--border-layout-o3);
-        background: var(--secondary-2);
+        background: linear-gradient(180deg, var(--secondary-a5), var(--secondary-a4));
         color: var(--text-2);
         font-size: .75rem;
         font-weight: 700;
-        transition: .2s;
+        backdrop-filter: blur(8px) saturate(1.1);
+        -webkit-backdrop-filter: blur(8px) saturate(1.1);
+        transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
         @media screen and (max-width: 768px) {
           font-size: .625rem;
         }
         &:hover {
-          background: var(--secondary-o3);
+          background: linear-gradient(180deg, var(--secondary-a4), var(--secondary-a3));
           color: var(--primary);
+          border-color: var(--primary-a3);
+          transform: translateY(-1px);
         }
       }
     }

@@ -13,7 +13,7 @@
   .page--home {
     display: flex;
     flex-direction: column;
-    gap: 10rem;
+    gap: 11rem;
     padding-bottom: 4rem;
   }
 </style>
