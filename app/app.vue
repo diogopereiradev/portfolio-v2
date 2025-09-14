@@ -46,7 +46,7 @@
       { name: 'apple-mobile-web-app-title', content: t('meta.title') },
       {
         name: 'theme-color',
-        content: '#e86d01'
+        content: '#22ecce'
       },
       {
         name: 'twitter:card',
