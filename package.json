@@ -1,5 +1,17 @@
 {
-  "name": "nuxt-app",
+  "name": "diogopereiradev-portfolio",
+  "version": "2.0.0",
+  "description": "Diogo Pereira's Portfolio - A showcase of my skills, projects, and experience as a developer.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diogopereiradev/portfolio"
+  },
+  "author": {
+    "name": "Diogo Pereira",
+    "email": "contact@diogopereira.dev",
+    "url": "https://diogopereira.dev"
+  },
+  "license": "MIT",
   "type": "module",
   "private": true,
   "scripts": {

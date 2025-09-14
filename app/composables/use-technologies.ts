@@ -616,6 +616,7 @@ export const technologies = (t: (path: string) => string, tm: (path: string) => 
     }
   } as const;
 
+  type TechsNames = keyof typeof techs;
   type TechExtras = Partial<Pick<Technology, 'description' | 'knowledges'>>;
   const withI18n = Object.fromEntries(
     Object.entries(techs).map(([key, tech]) => {
@@ -630,7 +631,7 @@ export const technologies = (t: (path: string) => string, tm: (path: string) => 
       ];
     }),
   );
-  return withI18n;
+  return withI18n as unknown as Record<TechsNames, Technology>;
 };
 
 type TechnologyKeys = keyof ReturnType<typeof technologies>;

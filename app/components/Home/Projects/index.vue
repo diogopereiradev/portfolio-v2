@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  const { t } = useI18n();
+  const { t, tm } = useI18n();
   const state = reactive({
     search: '',
   });
@@ -10,7 +10,7 @@
 
   const windowSize = useWindowWidth();
   const areas = useProgrammingAreas();
-  const technologies = useTechnologies(t);
+  const technologies = useTechnologies(t, tm);
 
   type Project = {
     title: string;
