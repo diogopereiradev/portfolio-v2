@@ -16,7 +16,7 @@
 
 <template>
   <a :href="live" target="_blank" rel="noopener noreferrer" class="component--project__card">
-    <NuxtImg :src="thumbnail" alt="project-thumbnail" />
+    <img :src="thumbnail" alt="project-thumbnail" />
     <div class="project__header">
       <h3 class="project__title">{{ title }}</h3>
       <div class="project__techs-icons">
