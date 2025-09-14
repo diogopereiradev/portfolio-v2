@@ -147,43 +147,45 @@
             </button>
           </div>
         </div>
-        <Transition name="fade-slide" mode="out-in">
-          <div
-            v-if="state.selectedSkill"
-            :key="state.selectedSkill.name"
-            class="skill__infos"
-            :style="{ '--icon-color': state.selectedSkill.color }"
-          >
-            <div class="left">
-              <div class="header">
-                <div class="title__container">
-                  <div class="icon">
-                    <Icon :name="state.selectedSkill.icon" size="20" />
+        <ClientOnly>
+          <Transition name="fade-slide" mode="out-in">
+            <div
+              v-if="state.selectedSkill"
+              :key="state.selectedSkill.name"
+              class="skill__infos"
+              :style="{ '--icon-color': state.selectedSkill.color }"
+            >
+              <div class="left">
+                <div class="header">
+                  <div class="title__container">
+                    <div class="icon">
+                      <Icon :name="state.selectedSkill.icon" size="20" />
+                    </div>
+                    <h4 class="title">{{ state.selectedSkill.name }}</h4>
                   </div>
-                  <h4 class="title">{{ state.selectedSkill.name }}</h4>
+                  <span v-if="state.selectedSkill.startAt && (experienceYears || 0) > 0" class="since__badge">
+                    {{ $t('skills.since', { date: new Date(state.selectedSkill.startAt).getFullYear() }) }}
+                    <template v-if="experienceYears !== undefined">
+                      {{ $t('skills.approxYears', { years: experienceYears }) }}
+                    </template>
+                  </span>
+                  <span v-if="state.selectedSkill.startAt && (experienceMonths || 0) > 0 && (experienceYears || 0) < 1" class="since__badge">
+                    {{ $t('skills.since', { date: new Date(state.selectedSkill.startAt).getFullYear() }) }}
+                    <template v-if="experienceMonths !== undefined">
+                      {{ $t('skills.approxMonths', { months: experienceMonths }) }}
+                    </template>
+                  </span>
                 </div>
-                <span v-if="state.selectedSkill.startAt && (experienceYears || 0) > 0" class="since__badge">
-                  {{ $t('skills.since', { date: new Date(state.selectedSkill.startAt).getFullYear() }) }}
-                  <template v-if="experienceYears !== undefined">
-                    {{ $t('skills.approxYears', { years: experienceYears }) }}
-                  </template>
-                </span>
-                <span v-if="state.selectedSkill.startAt && (experienceMonths || 0) > 0 && (experienceYears || 0) < 1" class="since__badge">
-                  {{ $t('skills.since', { date: new Date(state.selectedSkill.startAt).getFullYear() }) }}
-                  <template v-if="experienceMonths !== undefined">
-                    {{ $t('skills.approxMonths', { months: experienceMonths }) }}
-                  </template>
-                </span>
+                <p class="skill__description">{{ state.selectedSkill.description() }}</p>
               </div>
-              <p class="skill__description">{{ state.selectedSkill.description() }}</p>
+              <ul class="knowledges">
+                <li v-for="knowledge in state.selectedSkill.knowledges()" :key="knowledge">
+                  {{ knowledge }}
+                </li>
+              </ul>
             </div>
-            <ul class="knowledges">
-              <li v-for="knowledge in state.selectedSkill.knowledges()" :key="knowledge">
-                {{ knowledge }}
-              </li>
-            </ul>
-          </div>
-        </Transition>
+          </Transition>
+        </ClientOnly>
       </div>
     </div>
   </div>
