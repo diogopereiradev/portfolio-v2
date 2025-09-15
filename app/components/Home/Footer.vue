@@ -84,9 +84,11 @@
 		position: relative;
 		background: var(--secondary);
     .top__divider {
-      width: 100vw;
+      max-width: 100vw;
+      overflow: hidden;
       position: absolute;
       top: -26px;
+      left: 0;
     }
     .footer__content-container {
       .footer__content {

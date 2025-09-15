@@ -119,7 +119,7 @@
       position: absolute;
       left: 0;
       top: 0;
-      width: 100vw;
+      width: 100%;
       height: 1200px;
       overflow: hidden;
       z-index: 1;
