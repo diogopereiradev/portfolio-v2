@@ -84,14 +84,18 @@
 		position: relative;
 		background: var(--secondary);
     .top__divider {
-      max-width: 100vw;
-      overflow: hidden;
+      width: 100%;
       position: absolute;
       top: -26px;
       left: 0;
+      z-index: 9999;
     }
     .footer__content-container {
+      position: relative;
+      z-index: 1;
       .footer__content {
+        position: relative;
+        z-index: 1;
         display: grid;
         grid-template-columns: 1.2fr 1fr auto;
         gap: 2rem;
