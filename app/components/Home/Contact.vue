@@ -19,8 +19,8 @@
       id: 'email',
       icon: 'mdi:email-outline',
       labelKey: 'contact.items.email',
-      value: 'contact@diogopereiradev.dev',
-      href: 'mailto:contact@diogopereiradev.dev'
+      value: 'contact@diogopereira.dev',
+      href: 'mailto:contact@diogopereira.dev'
     },
     {
       id: 'github',
@@ -110,7 +110,7 @@
                 <p class="cta__subtitle">{{ $t('contact.cta.subtitle') }}</p>
               </div>
               <div class="cta__actions">
-                <a class="btn btn--primary" href="mailto:contact@diogopereiradev.dev">
+                <a class="btn btn--primary" href="mailto:contact@diogopereira.dev">
                   <Icon name="mdi:email-send-outline" size="18" />
                   <span>{{ $t('contact.cta.primary') }}</span>
                 </a>
