@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <div class="energy__effect-container desktop">
+      <div class="energy__effect-container">
         <EnergyCableEffect
           :container-el="contentEl"
           :start-el="badgeEl"
@@ -59,22 +59,6 @@
           :start-tangent-angle="1"
           :end-tangent-angle="1"
           :tip-handle="1"
-        />
-      </div>
-      <div class="energy__effect-container mobile">
-        <EnergyCableEffect
-          :container-el="contentEl"
-          :start-el="projectsEl"
-          :end-el="cardEl"
-          :start-at="{ x: 0.25, y: 0.9 }"
-          :end-at="{ x: 0.9, y: 0.1 }"
-          :thickness="3"
-          :glow-blur="6"
-          :curvature="3"
-          :start-tangent-angle="40"
-          :end-tangent-angle="80"
-          :speed="0.8"
-          :tip-handle="0.5"
         />
       </div>
       <div class="header__section">
@@ -506,16 +490,8 @@
         }
       }
       .energy__effect-container {
-        &.desktop {
-          @media screen and (max-width: 900px) {
-            display: none;
-          }
-        }
-        &.mobile {
+        @media screen and (max-width: 900px) {
           display: none;
-          @media screen and (max-width: 900px) {
-            display: unset;
-          }
         }
       }
     }

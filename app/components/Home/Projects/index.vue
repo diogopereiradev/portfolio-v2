@@ -347,6 +347,9 @@
             display: flex;
             justify-content: center;
             margin-top: 3.5rem;
+            @media screen and (max-width: 900px) {
+              margin-top: 1rem;
+            }
             a {
               display: inline-flex;
               justify-content: center;
@@ -369,6 +372,9 @@
               }
             }
             .energy__effect-container {
+              @media screen and (max-width: 900px) {
+                display: none;
+              }
               &.right {
                 :deep(svg) {
                   transform: scaleX(-1);
